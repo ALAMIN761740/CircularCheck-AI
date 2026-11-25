@@ -1,0 +1,327 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global safety net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Core identity and validation primitives
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isBootstrappedAdmin() {
+      return isVerifiedUser() && request.auth.token.email == 'abdullahalamin761740@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrappedAdmin() || (
+        isVerifiedUser() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active'
+      );
+    }
+
+    function isValidString(val, minLen, maxLen) {
+      return val is string && val.size() >= minLen && val.size() <= maxLen;
+    }
+
+    function isValidStringList(arr, maxItems) {
+      return arr is list && arr.size() <= maxItems && (arr.size() == 0 || arr[0] is string);
+    }
+
+    function isValidFindingsList(arr) {
+      return arr is list && arr.size() <= 20 && (arr.size() == 0 || arr[0] is map);
+    }
+
+    // Entity validation blueprints
+    function isValidUser(data, userId) {
+      return data.keys().hasAll(['uid', 'displayName', 'role', 'status', 'scanCount', 'createdAt', 'updatedAt']) &&
+        data.keys().hasOnly(['uid', 'displayName', 'photoUrl', 'role', 'status', 'scanCount', 'createdAt', 'updatedAt']) &&
+        data.uid == userId &&
+        isValidId(data.uid) &&
+        isValidString(data.displayName, 1, 120) &&
+        (!('photoUrl' in data) || isValidString(data.photoUrl, 0, 500)) &&
+        (data.role in ['user', 'admin']) &&
+        (data.status in ['active', 'suspended']) &&
+        data.scanCount is number && data.scanCount >= 0 && data.scanCount <= 1000000 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidUserPrivateInfo(data, userId) {
+      return data.keys().hasAll(['uid', 'email', 'updatedAt']) &&
+        data.keys().hasOnly(['uid', 'email', 'updatedAt']) &&
+        data.uid == userId &&
+        isValidId(data.uid) &&
+        isValidString(data.email, 3, 200) &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidScan(data, scanId) {
+      return data.keys().hasAll([
+          'id', 'userId', 'inputType', 'originalInput', 'extractedText',
+          'organizationName', 'jobTitle', 'salary', 'applicationDeadline',
+          'applicationFee', 'paymentMethod', 'contactInformation',
+          'emailAddress', 'websiteUrl', 'riskScore', 'riskLevel',
+          'verificationStatus', 'analysisSummary', 'analysisSummaryBn',
+          'findings', 'positiveSignals', 'recommendations', 'recommendationsBn',
+          'sources', 'isSaved', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'userId', 'inputType', 'originalInput', 'extractedText',
+          'organizationName', 'jobTitle', 'salary', 'applicationDeadline',
+          'applicationFee', 'paymentMethod', 'contactInformation',
+          'emailAddress', 'websiteUrl', 'riskScore', 'riskLevel',
+          'verificationStatus', 'analysisSummary', 'analysisSummaryBn',
+          'findings', 'positiveSignals', 'recommendations', 'recommendationsBn',
+          'sources', 'isSaved', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id == scanId &&
+        isValidId(data.id) &&
+        isValidId(data.userId) &&
+        (data.inputType in ['text', 'url', 'image', 'pdf']) &&
+        isValidString(data.originalInput, 1, 12000) &&
+        isValidString(data.extractedText, 0, 12000) &&
+        isValidString(data.organizationName, 0, 300) &&
+        isValidString(data.jobTitle, 0, 300) &&
+        isValidString(data.salary, 0, 200) &&
+        isValidString(data.applicationDeadline, 0, 200) &&
+        isValidString(data.applicationFee, 0, 200) &&
+        isValidString(data.paymentMethod, 0, 300) &&
+        isValidString(data.contactInformation, 0, 600) &&
+        isValidString(data.emailAddress, 0, 200) &&
+        isValidString(data.websiteUrl, 0, 500) &&
+        data.riskScore is number && data.riskScore >= 0 && data.riskScore <= 100 &&
+        (data.riskLevel in ['Low', 'Moderate', 'High', 'Critical']) &&
+        (data.verificationStatus in ['Verified Against Available Source', 'Partially Verified', 'Unverified', 'Unable to Verify']) &&
+        isValidString(data.analysisSummary, 1, 2500) &&
+        isValidString(data.analysisSummaryBn, 0, 3000) &&
+        isValidFindingsList(data.findings) &&
+        isValidStringList(data.positiveSignals, 15) &&
+        isValidStringList(data.recommendations, 15) &&
+        isValidStringList(data.recommendationsBn, 15) &&
+        isValidStringList(data.sources, 10) &&
+        data.isSaved is bool &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidCommunityReport(data, reportId) {
+      return data.keys().hasAll([
+          'id', 'userId', 'reporterName', 'scanId', 'organizationName',
+          'circularTitle', 'description', 'evidence', 'reportCategory',
+          'riskLevel', 'moderationStatus', 'adminNotes', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'userId', 'reporterName', 'scanId', 'organizationName',
+          'circularTitle', 'description', 'evidence', 'reportCategory',
+          'riskLevel', 'moderationStatus', 'adminNotes', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id == reportId &&
+        isValidId(data.id) &&
+        isValidId(data.userId) &&
+        isValidString(data.reporterName, 1, 120) &&
+        isValidString(data.scanId, 0, 128) &&
+        isValidString(data.organizationName, 1, 300) &&
+        isValidString(data.circularTitle, 1, 300) &&
+        isValidString(data.description, 10, 3000) &&
+        isValidString(data.evidence, 0, 2000) &&
+        (data.reportCategory in ['Payment Scam', 'Impersonation', 'Phishing URL', 'Fake Job Offer', 'Data Harvesting']) &&
+        (data.riskLevel in ['Low', 'Moderate', 'High', 'Critical']) &&
+        (data.moderationStatus in ['pending', 'approved', 'rejected']) &&
+        isValidString(data.adminNotes, 0, 1000) &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidVerificationSource(data, sourceId) {
+      return data.keys().hasAll([
+          'id', 'organizationName', 'officialDomain', 'officialRecruitmentUrl',
+          'sourceType', 'verificationNotes', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'id', 'organizationName', 'officialDomain', 'officialRecruitmentUrl',
+          'sourceType', 'verificationNotes', 'createdAt', 'updatedAt'
+        ]) &&
+        data.id == sourceId &&
+        isValidId(data.id) &&
+        isValidString(data.organizationName, 2, 240) &&
+        isValidString(data.officialDomain, 3, 200) &&
+        isValidString(data.officialRecruitmentUrl, 8, 500) &&
+        (data.sourceType in ['Government', 'Banking', 'NGO', 'Telecom & Corporate', 'Education']) &&
+        isValidString(data.verificationNotes, 0, 1000) &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidActivityLog(data, logId) {
+      return data.keys().hasAll(['id', 'userId', 'action', 'resourceType', 'resourceId', 'createdAt']) &&
+        data.keys().hasOnly(['id', 'userId', 'action', 'resourceType', 'resourceId', 'createdAt']) &&
+        data.id == logId &&
+        isValidId(data.id) &&
+        isValidId(data.userId) &&
+        isValidString(data.action, 2, 120) &&
+        isValidString(data.resourceType, 2, 80) &&
+        isValidString(data.resourceId, 1, 128) &&
+        data.createdAt is timestamp;
+    }
+
+    // Users collection (PII isolated into /private/info)
+    match /users/{userId} {
+      allow get: if isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isVerifiedUser() &&
+        isValidId(userId) &&
+        isOwner(userId) &&
+        isValidUser(incoming(), userId) &&
+        incoming().status == 'active' &&
+        (incoming().role == 'user' || (isBootstrappedAdmin() && incoming().role == 'admin')) &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser() &&
+        isValidId(userId) &&
+        isValidUser(incoming(), userId) &&
+        incoming().uid == existing().uid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time && (
+          isAdmin() ||
+          (
+            isOwner(userId) &&
+            incoming().role == existing().role &&
+            incoming().status == existing().status &&
+            incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoUrl', 'scanCount', 'updatedAt'])
+          )
+        );
+      allow delete: if isValidId(userId) && isAdmin();
+
+      match /private/{docId} {
+        allow get: if isValidId(userId) && isValidId(docId) && (isOwner(userId) || isAdmin());
+        allow list: if false;
+        allow create: if isVerifiedUser() &&
+          isValidId(userId) &&
+          docId == 'info' &&
+          isOwner(userId) &&
+          isValidUserPrivateInfo(incoming(), userId) &&
+          incoming().updatedAt == request.time;
+        allow update: if isVerifiedUser() &&
+          isValidId(userId) &&
+          docId == 'info' &&
+          (isOwner(userId) || isAdmin()) &&
+          isValidUserPrivateInfo(incoming(), userId) &&
+          incoming().uid == existing().uid &&
+          incoming().updatedAt == request.time &&
+          incoming().diff(existing()).affectedKeys().hasOnly(['email', 'updatedAt']);
+        allow delete: if isValidId(userId) && isAdmin();
+      }
+    }
+
+    // Circular scans
+    match /scans/{scanId} {
+      allow get: if isValidId(scanId) && isSignedIn() && (existing().userId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isVerifiedUser() &&
+        isValidId(scanId) &&
+        isValidScan(incoming(), scanId) &&
+        incoming().userId == request.auth.uid &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser() &&
+        isValidId(scanId) &&
+        isValidScan(incoming(), scanId) &&
+        incoming().id == existing().id &&
+        incoming().userId == existing().userId &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time && (
+          isAdmin() ||
+          (
+            existing().userId == request.auth.uid &&
+            incoming().diff(existing()).affectedKeys().hasOnly(['isSaved', 'updatedAt'])
+          )
+        );
+      allow delete: if isValidId(scanId) && isVerifiedUser() && (existing().userId == request.auth.uid || isAdmin());
+    }
+
+    // Community reports
+    match /communityReports/{reportId} {
+      allow get: if isValidId(reportId) && (
+        existing().moderationStatus == 'approved' ||
+        (isSignedIn() && (existing().userId == request.auth.uid || isAdmin()))
+      );
+      allow list: if resource.data.moderationStatus == 'approved' ||
+        (isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin()));
+      allow create: if isVerifiedUser() &&
+        isValidId(reportId) &&
+        isValidCommunityReport(incoming(), reportId) &&
+        incoming().userId == request.auth.uid &&
+        incoming().moderationStatus == 'pending' &&
+        incoming().adminNotes == '' &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time &&
+        (incoming().scanId == '' || exists(/databases/$(database)/documents/scans/$(incoming().scanId)));
+      allow update: if isValidId(reportId) &&
+        isAdmin() &&
+        isValidCommunityReport(incoming(), reportId) &&
+        incoming().id == existing().id &&
+        incoming().userId == existing().userId &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['moderationStatus', 'adminNotes', 'riskLevel', 'updatedAt']);
+      allow delete: if isValidId(reportId) && isVerifiedUser() && (existing().userId == request.auth.uid || isAdmin());
+    }
+
+    // Official verification reference directory
+    match /verificationSources/{sourceId} {
+      allow get: if isValidId(sourceId);
+      allow list: if true;
+      allow create: if isValidId(sourceId) &&
+        isAdmin() &&
+        isValidVerificationSource(incoming(), sourceId) &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isValidId(sourceId) &&
+        isAdmin() &&
+        isValidVerificationSource(incoming(), sourceId) &&
+        incoming().id == existing().id &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time;
+      allow delete: if isValidId(sourceId) && isAdmin();
+    }
+
+    // Immutable security & moderation activity logs
+    match /activityLogs/{logId} {
+      allow get: if isValidId(logId) && isAdmin();
+      allow list: if isAdmin();
+      allow create: if isVerifiedUser() &&
+        isValidId(logId) &&
+        isValidActivityLog(incoming(), logId) &&
+        incoming().userId == request.auth.uid &&
+        incoming().createdAt == request.time;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

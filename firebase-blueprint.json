@@ -1,0 +1,413 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered CircularCheck AI user account metadata and role.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Firebase Auth UID."
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "User display name."
+        },
+        "photoUrl": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Optional profile avatar URL."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "admin"],
+          "description": "Access control role."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "suspended"],
+          "description": "Account status."
+        },
+        "scanCount": {
+          "type": "number",
+          "description": "Total circular scans executed by the user."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": ["uid", "displayName", "role", "status", "scanCount", "createdAt", "updatedAt"]
+    },
+    "UserPrivateInfo": {
+      "title": "UserPrivateInfo",
+      "description": "Isolated PII document for a registered user.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "email", "updatedAt"]
+    },
+    "Scan": {
+      "title": "Scan",
+      "description": "AI and rule-based circular verification analysis report.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "inputType": {
+          "type": "string",
+          "enum": ["text", "url", "image", "pdf"]
+        },
+        "originalInput": {
+          "type": "string",
+          "maxLength": 12000
+        },
+        "extractedText": {
+          "type": "string",
+          "maxLength": 12000
+        },
+        "organizationName": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "jobTitle": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "salary": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "applicationDeadline": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "applicationFee": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "paymentMethod": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "contactInformation": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "emailAddress": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "websiteUrl": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "riskScore": {
+          "type": "number"
+        },
+        "riskLevel": {
+          "type": "string",
+          "enum": ["Low", "Moderate", "High", "Critical"]
+        },
+        "verificationStatus": {
+          "type": "string",
+          "enum": [
+            "Verified Against Available Source",
+            "Partially Verified",
+            "Unverified",
+            "Unable to Verify"
+          ]
+        },
+        "analysisSummary": {
+          "type": "string",
+          "maxLength": 2500
+        },
+        "analysisSummaryBn": {
+          "type": "string",
+          "maxLength": 3000
+        },
+        "findings": {
+          "type": "array",
+          "description": "Structured risk indicators detected."
+        },
+        "positiveSignals": {
+          "type": "array",
+          "description": "Trustworthy indicators detected."
+        },
+        "recommendations": {
+          "type": "array",
+          "description": "Recommended next steps in English."
+        },
+        "recommendationsBn": {
+          "type": "array",
+          "description": "Recommended next steps in Bengali."
+        },
+        "sources": {
+          "type": "array",
+          "description": "Official verification references checked."
+        },
+        "isSaved": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "inputType",
+        "originalInput",
+        "extractedText",
+        "organizationName",
+        "jobTitle",
+        "salary",
+        "applicationDeadline",
+        "applicationFee",
+        "paymentMethod",
+        "contactInformation",
+        "emailAddress",
+        "websiteUrl",
+        "riskScore",
+        "riskLevel",
+        "verificationStatus",
+        "analysisSummary",
+        "analysisSummaryBn",
+        "findings",
+        "positiveSignals",
+        "recommendations",
+        "recommendationsBn",
+        "sources",
+        "isSaved",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "CommunityReport": {
+      "title": "CommunityReport",
+      "description": "User-submitted suspicious recruitment advertisement for community review.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "reporterName": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "scanId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "organizationName": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "circularTitle": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 3000
+        },
+        "evidence": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "reportCategory": {
+          "type": "string",
+          "enum": ["Payment Scam", "Impersonation", "Phishing URL", "Fake Job Offer", "Data Harvesting"]
+        },
+        "riskLevel": {
+          "type": "string",
+          "enum": ["Low", "Moderate", "High", "Critical"]
+        },
+        "moderationStatus": {
+          "type": "string",
+          "enum": ["pending", "approved", "rejected"]
+        },
+        "adminNotes": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "reporterName",
+        "scanId",
+        "organizationName",
+        "circularTitle",
+        "description",
+        "evidence",
+        "reportCategory",
+        "riskLevel",
+        "moderationStatus",
+        "adminNotes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "VerificationSource": {
+      "title": "VerificationSource",
+      "description": "Trusted official Bangladeshi recruitment source reference.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "organizationName": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "officialDomain": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "officialRecruitmentUrl": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": ["Government", "Banking", "NGO", "Telecom & Corporate", "Education"]
+        },
+        "verificationNotes": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "organizationName",
+        "officialDomain",
+        "officialRecruitmentUrl",
+        "sourceType",
+        "verificationNotes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Audit log entry for security and administrative monitoring.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "action": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "resourceType": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "resourceId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "userId", "action", "resourceType", "resourceId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile metadata and role."
+    },
+    "/users/{userId}/private/{docId}": {
+      "schema": { "$ref": "#/entities/UserPrivateInfo" },
+      "description": "Isolated user PII (email)."
+    },
+    "/scans/{scanId}": {
+      "schema": { "$ref": "#/entities/Scan" },
+      "description": "Saved circular scan reports owned by users."
+    },
+    "/communityReports/{reportId}": {
+      "schema": { "$ref": "#/entities/CommunityReport" },
+      "description": "Community-submitted suspicious job circular reports."
+    },
+    "/verificationSources/{sourceId}": {
+      "schema": { "$ref": "#/entities/VerificationSource" },
+      "description": "Official recruitment source verification registry."
+    },
+    "/activityLogs/{logId}": {
+      "schema": { "$ref": "#/entities/ActivityLog" },
+      "description": "Immutable administrative and security audit log."
+    }
+  }
+}

@@ -1,0 +1,1586 @@
+# PROJECT PROPOSAL
+
+# CircularCheck AI
+### AI-Powered Job Circular Verification & Scam Risk Analysis Platform
+
+**Project Type:** Web-Based AI Application  
+**Technology:** React.js, Node.js, Express.js, MongoDB, Artificial Intelligence  
+**Project Category:** Artificial Intelligence, Cybersecurity, Web Application Development  
+**Proposed Platform:** Web Application  
+**Target Country:** Bangladesh  
+
+---
+
+## 1. Executive Summary
+
+CircularCheck AI is an AI-powered web application designed to help job seekers identify suspicious job circulars, recruitment advertisements, and potential employment-related scams. The platform aims to provide a centralized and intelligent verification system where users can analyze job advertisements through text, URLs, uploaded images, and PDF documents.
+
+In Bangladesh, job seekers frequently encounter recruitment advertisements across social media, websites, messaging platforms, and online communities. Some advertisements may contain misleading information, fraudulent payment requests, impersonation of legitimate organizations, suspicious links, and false recruitment claims. Many applicants lack the technical knowledge or resources to independently verify the authenticity of these advertisements.
+
+CircularCheck AI addresses this problem by combining Artificial Intelligence, text extraction, suspicious-pattern analysis, structured risk assessment, URL analysis, and evidence-based verification guidance. The platform will analyze submitted job circulars and generate understandable reports containing risk indicators, detected inconsistencies, verification status, supporting evidence, and recommended actions.
+
+The application will support a user-friendly interface designed for Bangladeshi job seekers, with the potential to provide both Bengali and English explanations. Users will be able to scan advertisements, review previous analyses, save circulars, submit community reports, and learn how to avoid employment scams.
+
+CircularCheck AI will not claim to definitively determine whether a job circular is genuine or fraudulent solely based on AI-generated predictions. Instead, it will provide transparent risk indicators and verification assistance to support informed decision-making.
+
+The project will be developed as a modern full-stack web application using React.js, Tailwind CSS, Node.js, Express.js, MongoDB, and AI-powered analysis services.
+
+---
+
+## 2. Introduction
+
+### 2.1 Background
+
+Online recruitment has become an important part of the job-seeking process. Government organizations, private companies, NGOs, educational institutions, and other employers frequently publish job advertisements through digital platforms.
+
+However, the growth of online recruitment has also created opportunities for fraudulent activities. Fake recruitment advertisements may impersonate organizations, request unauthorized payments, collect personal information, distribute malicious links, or mislead applicants through false promises.
+
+Job seekers often find it difficult to determine whether an advertisement is trustworthy, particularly when it is shared through social media or forwarded messages without an official source.
+
+Traditional methods of verification require users to manually search official websites, compare information, check URLs, and contact organizations. These processes may be time-consuming and confusing for inexperienced users.
+
+CircularCheck AI proposes an intelligent digital solution that combines automated analysis with verification guidance to make the job-circular checking process easier, faster, and more accessible.
+
+### 2.2 Project Overview
+
+CircularCheck AI will provide an integrated platform for analyzing recruitment advertisements and identifying potential warning signs.
+
+Users will be able to:
+
+- Submit job circular text for analysis.
+- Upload screenshots and images of job advertisements.
+- Upload PDF recruitment notices.
+- Submit URLs for analysis.
+- Receive structured AI-generated analysis reports.
+- View potential fraud indicators.
+- Review positive and negative verification signals.
+- Check available official-source references.
+- Save and revisit previous analyses.
+- Report suspicious circulars.
+- Explore community-reported suspicious recruitment advertisements.
+- Access educational resources about employment-related scams.
+
+The platform will combine automated AI analysis, rule-based detection, and available verification data to produce a structured assessment.
+
+---
+
+## 3. Problem Statement
+
+Job seekers face several challenges when evaluating the authenticity of online job advertisements.
+
+### 3.1 Fake Recruitment Advertisements
+
+Fraudulent advertisements may imitate legitimate organizations, government institutions, companies, NGOs, or recruitment agencies.
+
+### 3.2 Unauthorized Payment Requests
+
+Some suspicious recruitment advertisements may request application fees, processing charges, interview fees, training fees, or other payments through personal accounts or unofficial channels.
+
+### 3.3 Misleading Information
+
+Fraudulent advertisements may contain unrealistic salary claims, false recruitment promises, misleading deadlines, inconsistent job descriptions, or fabricated organizational information.
+
+### 3.4 Suspicious URLs and Websites
+
+Job seekers may encounter suspicious links, impersonated websites, lookalike domains, phishing pages, or websites designed to collect sensitive information.
+
+### 3.5 Lack of Accessible Verification Tools
+
+Many applicants do not have access to a centralized platform that can help them analyze job advertisements and understand potential warning signs in a simple and accessible manner.
+
+### 3.6 Difficulty Understanding Risk Indicators
+
+Even when suspicious information is present, users may not understand why a particular advertisement is potentially risky.
+
+CircularCheck AI will address these challenges through automated analysis, transparent explanations, risk indicators, and verification guidance.
+
+---
+
+## 4. Project Objectives
+
+### 4.1 Primary Objective
+
+To develop an AI-powered web application that assists job seekers in analyzing recruitment advertisements and identifying potential employment-related fraud indicators through automated risk assessment and verification guidance.
+
+### 4.2 Specific Objectives
+
+1. Develop a responsive web application for job-circular analysis.
+2. Enable users to submit job advertisements through text, URL, image, and PDF formats.
+3. Extract relevant information from submitted advertisements.
+4. Analyze recruitment advertisements using AI and rule-based methods.
+5. Identify potential scam indicators and suspicious patterns.
+6. Generate structured risk assessment reports.
+7. Provide understandable explanations of detected risks.
+8. Support source verification and reference tracking.
+9. Allow authenticated users to save and revisit scan history.
+10. Develop a community reporting system for suspicious circulars.
+11. Provide an administrative dashboard for managing users, reports, and community submissions.
+12. Improve public awareness of recruitment-related fraud and online safety.
+13. Build a scalable foundation for future verification features.
+
+---
+
+## 5. Proposed Solution
+
+CircularCheck AI will provide a centralized job-circular analysis platform accessible through modern web browsers.
+
+The platform will allow users to submit recruitment advertisements and receive a structured analysis report. The analysis process will combine multiple techniques, including:
+
+- Text extraction and preprocessing.
+- AI-powered semantic analysis.
+- Suspicious-pattern detection.
+- Rule-based risk indicators.
+- URL and domain analysis.
+- Organization and source verification where reliable data is available.
+- Structured evidence presentation.
+- Risk scoring and recommendations.
+
+The platform will present its findings in a user-friendly format that allows users to understand what was detected, why it matters, and how they can independently verify the advertisement.
+
+### 5.1 Solution Workflow
+
+**Step 1: User Submission**
+
+The user submits a job circular through one of the supported input methods.
+
+Supported inputs:
+
+- Text.
+- Website URL.
+- Image or screenshot.
+- PDF document.
+
+**Step 2: Data Extraction**
+
+The system extracts relevant information, including:
+
+- Organization name.
+- Job title.
+- Salary information.
+- Application deadline.
+- Application fee.
+- Contact details.
+- Email addresses.
+- URLs.
+- Recruitment instructions.
+- Required qualifications.
+- Payment instructions.
+- Important claims.
+
+**Step 3: Preprocessing**
+
+The extracted information is cleaned, normalized, and prepared for analysis.
+
+**Step 4: AI Analysis**
+
+The AI analysis engine evaluates the advertisement and identifies potential warning signs, inconsistencies, suspicious claims, and positive signals.
+
+**Step 5: Rule-Based Analysis**
+
+The system applies predefined detection rules to identify patterns such as:
+
+- Requests for payment through personal accounts.
+- Suspicious contact information.
+- Unusual urgency.
+- Inconsistent recruitment information.
+- Suspicious URL patterns.
+- Missing verification information.
+- Potential impersonation indicators.
+
+**Step 6: Source Verification**
+
+The system attempts to compare relevant details against available trusted sources, official websites, or approved reference data.
+
+**Step 7: Risk Assessment**
+
+The system calculates a risk score based on available indicators and their weighted importance.
+
+**Step 8: Report Generation**
+
+The platform generates a report containing:
+
+- Risk score.
+- Risk category.
+- Verification status.
+- Detected findings.
+- Evidence.
+- Positive signals.
+- Recommendations.
+- Source references.
+- Important limitations.
+
+**Step 9: Report Storage**
+
+Authenticated users can save their analyses and access them later through their dashboard.
+
+---
+
+## 6. Target Users
+
+### 6.1 Primary Users
+
+**Job Seekers**
+
+Individuals searching for government, private, NGO, corporate, educational, or other employment opportunities.
+
+**Students and Fresh Graduates**
+
+Students, recent graduates, and entry-level job seekers who may have limited experience evaluating recruitment advertisements.
+
+**Government Job Applicants**
+
+Individuals applying for government recruitment opportunities who need assistance reviewing recruitment notices, payment instructions, application URLs, and official information.
+
+**Private-Sector Job Applicants**
+
+Individuals applying for employment through private companies, online recruitment platforms, social media, or job portals.
+
+### 6.2 Secondary Users
+
+**Community Contributors**
+
+Users who submit suspicious advertisements or share information about potentially fraudulent recruitment activities.
+
+**Platform Administrators**
+
+Authorized personnel responsible for managing users, reviewing community reports, monitoring platform activity, and maintaining the platform.
+
+**Educational Institutions and Awareness Organizations**
+
+Institutions that may use the platform as an educational or awareness resource.
+
+---
+
+## 7. Scope of the Project
+
+### 7.1 Included Features
+
+The initial version of CircularCheck AI will include:
+
+- Public landing page.
+- Job circular scanning.
+- Text-based analysis.
+- URL analysis.
+- Image and screenshot upload.
+- PDF upload.
+- OCR and text extraction.
+- AI-powered analysis.
+- Rule-based suspicious-pattern detection.
+- Risk scoring.
+- Structured analysis reports.
+- Verification status indicators.
+- Recommendations.
+- User registration and authentication.
+- User dashboard.
+- Scan history.
+- Saved circulars.
+- Community reports.
+- Report submission.
+- Admin dashboard.
+- User management.
+- Report moderation.
+- Analytics and statistics.
+- Responsive design.
+- Bengali and English support, where feasible.
+
+### 7.2 Excluded from the Initial Version
+
+The initial version will not guarantee:
+
+- Definitive verification of every recruitment advertisement.
+- Real-time verification of all organizations.
+- Automatic access to every government recruitment database.
+- Legal certification of recruitment advertisements.
+- Guaranteed detection of all fraudulent advertisements.
+- Automated financial transaction protection.
+- Direct integration with all job portals.
+- Guaranteed identity verification of employers.
+- Guaranteed detection of every malicious website.
+
+These features may be considered in future development.
+
+---
+
+## 8. Functional Requirements
+
+### FR-01: User Registration
+
+The system shall allow users to create accounts using supported registration methods.
+
+Registration information may include:
+
+- Full name.
+- Email address.
+- Password.
+- Optional profile information.
+
+### FR-02: User Authentication
+
+The system shall allow registered users to log in and log out securely.
+
+### FR-03: Role-Based Access
+
+The system shall support different access levels, including:
+
+- Guest.
+- Registered user.
+- Administrator.
+
+### FR-04: Circular Submission
+
+The system shall allow users to submit job circulars using:
+
+- Text input.
+- URL input.
+- Image upload.
+- PDF upload.
+
+### FR-05: Text Extraction
+
+The system shall extract relevant text from supported documents and images.
+
+### FR-06: Circular Information Extraction
+
+The system shall identify relevant information, such as:
+
+- Organization.
+- Position.
+- Salary.
+- Deadline.
+- Application fee.
+- Contact information.
+- Email address.
+- URL.
+- Payment information.
+
+### FR-07: AI Analysis
+
+The system shall analyze submitted advertisements using an AI-powered analysis engine.
+
+### FR-08: Suspicious Pattern Detection
+
+The system shall detect potential warning signs based on predefined rules and AI analysis.
+
+### FR-09: Risk Scoring
+
+The system shall generate a numerical risk indicator based on identified signals and their weighted importance.
+
+### FR-10: Risk Classification
+
+The system shall classify analyzed advertisements into predefined risk categories.
+
+Proposed categories:
+
+- Low Risk Indicators.
+- Moderate Risk Indicators.
+- High Risk Indicators.
+- Critical Risk Indicators.
+
+The categories shall represent risk indicators rather than definitive fraud classifications.
+
+### FR-11: Analysis Report
+
+The system shall generate a structured report containing:
+
+- Risk score.
+- Risk category.
+- Verification status.
+- Summary.
+- Suspicious indicators.
+- Positive signals.
+- Recommendations.
+- Supporting evidence.
+- Source references where available.
+
+### FR-12: Source Verification
+
+The system shall attempt to verify submitted information against available official sources and reference data.
+
+### FR-13: Scan History
+
+Registered users shall be able to view previously analyzed circulars.
+
+### FR-14: Saved Circulars
+
+Registered users shall be able to save circulars and reports for later review.
+
+### FR-15: Community Report Submission
+
+Users shall be able to submit suspicious recruitment advertisements for community review.
+
+### FR-16: Community Report Listing
+
+The system shall display approved community reports with relevant information and moderation status.
+
+### FR-17: Report Moderation
+
+Administrators shall be able to review, approve, reject, or remove community submissions.
+
+### FR-18: User Management
+
+Administrators shall be able to view user accounts and manage relevant administrative actions.
+
+### FR-19: Analytics Dashboard
+
+Administrators shall be able to view platform statistics, including:
+
+- Total registered users.
+- Total scans.
+- Total community submissions.
+- Reported advertisements.
+- Risk-category distribution.
+- Recent activity.
+
+### FR-20: Educational Resources
+
+The system shall provide educational information about common recruitment scams, online safety, and verification practices.
+
+### FR-21: Language Support
+
+The platform shall support English and, where feasible, Bengali for the user interface and AI explanations.
+
+### FR-22: PDF Report Export
+
+The system shall allow users to export analysis reports as PDF documents, subject to available implementation resources.
+
+---
+
+## 9. AI Analysis Methodology
+
+The AI analysis engine will combine language-model analysis, rule-based detection, structured information extraction, and available verification data.
+
+### 9.1 AI-Powered Text Analysis
+
+The AI model will analyze the submitted advertisement and identify potential patterns associated with recruitment scams.
+
+The analysis may include:
+
+- Suspicious recruitment claims.
+- Unusual payment instructions.
+- Misleading urgency.
+- Inconsistent job requirements.
+- Unusual salary claims.
+- Suspicious contact information.
+- Potential impersonation.
+- Unclear recruitment procedures.
+- Missing official references.
+- Manipulative language.
+- Requests for sensitive information.
+
+### 9.2 Structured Information Extraction
+
+The AI system will extract relevant information into structured fields.
+
+Example fields:
+
+- Organization name.
+- Job title.
+- Salary range.
+- Application deadline.
+- Application fee.
+- Payment method.
+- Contact number.
+- Email.
+- Website.
+- Job description.
+- Required qualifications.
+
+### 9.3 Rule-Based Detection
+
+A predefined detection system will evaluate specific indicators independently of the AI model.
+
+Examples of detection rules:
+
+**Rule 1: Personal Payment Request**
+
+If a circular requests payment through a personal mobile financial account or personal bank account, the system may assign a risk indicator.
+
+**Rule 2: Urgency Pressure**
+
+If the advertisement contains language designed to pressure applicants into immediate payment or submission, the system may identify an urgency indicator.
+
+**Rule 3: Suspicious URL**
+
+If a submitted URL contains suspicious patterns, misleading domain characteristics, or other detectable warning signs, the system may flag it for further review.
+
+**Rule 4: Missing Official Reference**
+
+If an advertisement cannot be linked to a known official source, the system may classify its verification status as unverified.
+
+**Rule 5: Inconsistent Information**
+
+If extracted information contains contradictions, the system may identify an inconsistency indicator.
+
+**Rule 6: Sensitive Information Requests**
+
+If the advertisement requests unusually sensitive information, the system may identify a privacy-related warning.
+
+### 9.4 Risk Assessment Model
+
+The risk score will be generated using a weighted scoring approach.
+
+Proposed risk categories:
+
+| Score | Category | Interpretation |
+|---|---|---|
+| 0–24 | Low | Few risk indicators detected |
+| 25–49 | Moderate | Some indicators require review |
+| 50–74 | High | Multiple significant indicators detected |
+| 75–100 | Critical | Strong or numerous warning indicators detected |
+
+These thresholds are provisional and will require testing and calibration.
+
+### 9.5 Proposed Risk Factors
+
+| Factor | Proposed Weight |
+|---|---:|
+| Suspicious payment request | 25 |
+| Suspicious URL or domain | 20 |
+| Organization impersonation indicators | 20 |
+| Inconsistent recruitment information | 15 |
+| Manipulative urgency | 10 |
+| Suspicious contact information | 10 |
+| Total | 100 |
+
+The proposed weights are illustrative and will be refined during development.
+
+The final scoring system should avoid blindly adding all indicators together. It should account for duplicate signals, missing information, confidence, context, and false positives.
+
+### 9.6 AI Report Generation
+
+The AI system shall produce a structured report containing:
+
+- Summary.
+- Extracted information.
+- Risk score.
+- Risk classification.
+- Verification status.
+- Suspicious indicators.
+- Positive signals.
+- Evidence.
+- Recommendations.
+- Limitations.
+
+### 9.7 AI Safety and Reliability
+
+The system shall:
+
+- Avoid making unsupported definitive claims.
+- Distinguish suspicion from confirmed fraud.
+- Explain the reasons behind findings.
+- Identify unavailable verification data.
+- Provide uncertainty information.
+- Avoid presenting AI-generated information as official evidence.
+- Encourage users to verify information independently.
+
+---
+
+## 10. Verification Methodology
+
+CircularCheck AI will use multiple verification techniques where applicable.
+
+### 10.1 Official Website Verification
+
+The system may compare extracted information with available official websites and verified recruitment sources.
+
+### 10.2 Domain Analysis
+
+The system may evaluate:
+
+- Domain structure.
+- URL patterns.
+- HTTPS availability.
+- Lookalike domain characteristics.
+- Domain-related information available through supported services.
+
+HTTPS alone shall not be treated as evidence that a website is trustworthy.
+
+### 10.3 Contact Information Analysis
+
+The system may analyze:
+
+- Email domain consistency.
+- Contact number patterns.
+- Presence of personal contact information.
+- Contact information inconsistencies.
+
+### 10.4 Reference Data
+
+The system may use an internal or externally sourced reference dataset containing:
+
+- Known official recruitment websites.
+- Organization domains.
+- Government recruitment portals.
+- Verified contact information.
+- Trusted reference URLs.
+
+### 10.5 Verification Status
+
+The platform will display verification statuses such as:
+
+- Verified Against Available Source.
+- Partially Verified.
+- Unverified.
+- Unable to Verify.
+
+These statuses will be determined by the evidence available to the system, not by AI confidence alone.
+
+---
+
+## 11. System Architecture
+
+### 11.1 Architecture Overview
+
+The system will use a modular client-server architecture.
+
+**Frontend Layer**
+
+Responsible for:
+
+- User interface.
+- Input forms.
+- Circular submission.
+- Dashboard.
+- Report display.
+- Authentication interfaces.
+- Admin interfaces.
+
+**Backend Layer**
+
+Responsible for:
+
+- API management.
+- Authentication.
+- Authorization.
+- File handling.
+- Data processing.
+- AI integration.
+- Risk scoring.
+- Report storage.
+- Community report management.
+
+**AI Processing Layer**
+
+Responsible for:
+
+- Text analysis.
+- Information extraction.
+- Suspicious-pattern analysis.
+- Structured report generation.
+- Bengali and English explanations.
+
+**Verification Layer**
+
+Responsible for:
+
+- URL analysis.
+- Reference data checks.
+- Official-source comparison.
+- Verification status determination.
+
+**Database Layer**
+
+Responsible for:
+
+- User data.
+- Circular records.
+- Analysis reports.
+- Community reports.
+- Saved circulars.
+- Verification references.
+- Administrative data.
+
+### 11.2 System Workflow Diagram
+
+User Submission  
+↓  
+React Web Application  
+↓  
+Node.js / Express API  
+↓  
+Input Processing & Extraction  
+↓  
+AI Analysis Engine + Rule-Based Engine  
+↓  
+Verification & Reference Checks  
+↓  
+Risk Assessment  
+↓  
+Structured Report Generation  
+↓  
+MongoDB Storage  
+↓  
+User Dashboard & Report Interface
+
+---
+
+## 12. Technology Stack
+
+### 12.1 Frontend
+
+**React.js**
+
+Used to develop the component-based web application.
+
+**Vite**
+
+Used for development tooling and frontend build management.
+
+**Tailwind CSS**
+
+Used for responsive styling and design consistency.
+
+**React Router DOM**
+
+Used for routing and layout management.
+
+**TanStack Query**
+
+Used for server-state management and API data synchronization.
+
+**Axios**
+
+Used for API communication.
+
+**React Hook Form**
+
+Used for form management.
+
+**Zod**
+
+Used for input validation and schema validation.
+
+**Recharts**
+
+Used for charts and analytics visualization.
+
+**Lucide React**
+
+Used for icons.
+
+**Framer Motion**
+
+Used for animations and interactive transitions.
+
+### 12.2 Backend
+
+**Node.js**
+
+Used as the backend runtime environment.
+
+**Express.js**
+
+Used to build RESTful API services.
+
+**MongoDB**
+
+Used as the primary database.
+
+**Mongoose**
+
+Used for database schema and data management.
+
+### 12.3 Authentication
+
+Authentication may be implemented using:
+
+- Firebase Authentication, or
+- Secure backend-managed authentication using JWT and appropriate password hashing.
+
+The final authentication architecture will depend on the selected implementation.
+
+### 12.4 AI Integration
+
+The platform may integrate a supported AI API capable of:
+
+- Natural language understanding.
+- Structured data extraction.
+- Classification.
+- Reasoning over supplied text.
+- Bengali and English explanation generation.
+
+### 12.5 OCR and Document Processing
+
+Possible technologies:
+
+- Tesseract OCR.
+- Cloud OCR services.
+- PDF text extraction libraries.
+
+### 12.6 Deployment
+
+Proposed deployment services:
+
+- Frontend: Vercel or an equivalent hosting platform.
+- Backend: Render, Railway, or another suitable server platform.
+- Database: MongoDB Atlas.
+- File Storage: Cloud storage service.
+
+The deployment configuration will be selected based on availability, cost, security, and project requirements.
+
+---
+
+## 13. Frontend Modules and Pages
+
+### 13.1 Landing Page
+
+The landing page will contain:
+
+- Hero section.
+- Project introduction.
+- Circular scanning entry point.
+- How it works.
+- Feature highlights.
+- Statistics section.
+- Safety tips.
+- Community reports preview.
+- FAQ section.
+- Footer.
+
+### 13.2 Scan Page
+
+The scan page will provide:
+
+- Text input.
+- URL input.
+- Image upload.
+- PDF upload.
+- Input validation.
+- Submission button.
+- Processing indicator.
+- Analysis progress states.
+
+### 13.3 Analysis Report Page
+
+The report page will display:
+
+- Risk score.
+- Risk category.
+- Verification status.
+- Summary.
+- Extracted circular details.
+- Suspicious indicators.
+- Positive signals.
+- Supporting evidence.
+- Recommendations.
+- Source references.
+- Report disclaimer.
+- Save report option.
+- PDF export option.
+
+### 13.4 Authentication Pages
+
+The authentication module will include:
+
+- Login page.
+- Registration page.
+- Forgot-password workflow, where supported.
+- Authentication error handling.
+- Protected route behavior.
+
+### 13.5 User Dashboard
+
+The dashboard will contain:
+
+- Overview statistics.
+- Recent scans.
+- Risk distribution.
+- Saved circulars.
+- Quick scan action.
+- Recent community reports.
+
+### 13.6 Scan History Page
+
+The page will provide:
+
+- Previous scan listings.
+- Search.
+- Filters.
+- Sorting.
+- Report viewing.
+- Delete functionality, where appropriate.
+
+### 13.7 Saved Circulars Page
+
+The page will provide:
+
+- Saved advertisements.
+- Saved analysis reports.
+- Organization details.
+- Quick access to report pages.
+
+### 13.8 Community Page
+
+The page will contain:
+
+- Community-reported circulars.
+- Search.
+- Filters.
+- Report status.
+- Submission details.
+- Moderation indicators.
+- Community reporting functionality.
+
+### 13.9 Safety Guide Page
+
+The page will contain educational resources covering:
+
+- Recruitment scams.
+- Unauthorized payment requests.
+- Phishing.
+- Fake websites.
+- Impersonation.
+- Privacy protection.
+- Independent verification.
+
+### 13.10 Admin Dashboard
+
+The admin dashboard will contain:
+
+- Overview analytics.
+- User management.
+- Community report moderation.
+- Circular report management.
+- Activity statistics.
+- Administrative controls.
+
+---
+
+## 14. Backend API Design
+
+The backend will provide RESTful APIs.
+
+### 14.1 Authentication APIs
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/auth/register` | Register user |
+| POST | `/api/auth/login` | Authenticate user |
+| POST | `/api/auth/logout` | Logout |
+| GET | `/api/auth/me` | Get authenticated user |
+
+### 14.2 Circular Analysis APIs
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/scans/text` | Analyze text |
+| POST | `/api/scans/url` | Analyze URL |
+| POST | `/api/scans/file` | Analyze uploaded image or PDF |
+| GET | `/api/scans/:id` | Get analysis report |
+| GET | `/api/scans/history` | Get user's scan history |
+| DELETE | `/api/scans/:id` | Delete saved scan |
+
+### 14.3 Saved Circular APIs
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/saved/:scanId` | Save circular/report |
+| GET | `/api/saved` | Retrieve saved items |
+| DELETE | `/api/saved/:scanId` | Remove saved item |
+
+### 14.4 Community APIs
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/community/reports` | Submit report |
+| GET | `/api/community/reports` | Get approved reports |
+| GET | `/api/community/reports/:id` | Get report details |
+| DELETE | `/api/community/reports/:id` | Delete own report, subject to policy |
+
+### 14.5 Admin APIs
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/admin/overview` | Get analytics |
+| GET | `/api/admin/users` | Get users |
+| PATCH | `/api/admin/users/:id` | Manage user |
+| GET | `/api/admin/reports` | Get submitted reports |
+| PATCH | `/api/admin/reports/:id/status` | Update moderation status |
+| GET | `/api/admin/analytics` | Get analytics data |
+
+### 14.6 Verification APIs
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/verify/url` | Analyze URL |
+| POST | `/api/verify/organization` | Check organization references |
+| GET | `/api/verify/sources` | Retrieve verification sources |
+
+These endpoint names are proposed and may be adjusted during implementation.
+
+---
+
+## 15. Database Design
+
+The application will use MongoDB.
+
+### 15.1 User Collection
+
+Proposed fields:
+
+- `_id`
+- `name`
+- `email`
+- `passwordHash`, if applicable
+- `role`
+- `profileImage`
+- `createdAt`
+- `updatedAt`
+- `status`
+
+### 15.2 Scan Collection
+
+Proposed fields:
+
+- `_id`
+- `userId`
+- `inputType`
+- `originalInput`
+- `extractedText`
+- `organizationName`
+- `jobTitle`
+- `salary`
+- `applicationDeadline`
+- `applicationFee`
+- `contactInformation`
+- `riskScore`
+- `riskLevel`
+- `verificationStatus`
+- `analysisSummary`
+- `findings`
+- `positiveSignals`
+- `recommendations`
+- `sources`
+- `createdAt`
+
+### 15.3 Community Report Collection
+
+Proposed fields:
+
+- `_id`
+- `userId`
+- `scanId`
+- `organizationName`
+- `circularTitle`
+- `description`
+- `evidence`
+- `reportCategory`
+- `moderationStatus`
+- `adminNotes`
+- `createdAt`
+- `updatedAt`
+
+### 15.4 Saved Circular Collection
+
+Proposed fields:
+
+- `_id`
+- `userId`
+- `scanId`
+- `createdAt`
+
+### 15.5 Verification Source Collection
+
+Proposed fields:
+
+- `_id`
+- `organizationName`
+- `officialDomain`
+- `officialRecruitmentUrl`
+- `sourceType`
+- `verificationNotes`
+- `lastVerifiedAt`
+- `createdAt`
+- `updatedAt`
+
+### 15.6 Activity Log Collection
+
+Proposed fields:
+
+- `_id`
+- `userId`
+- `action`
+- `resourceType`
+- `resourceId`
+- `createdAt`
+
+The activity log will be used for administrative auditing and relevant security monitoring.
+
+---
+
+## 16. User Interface and Design Requirements
+
+The UI/UX will prioritize accessibility, usability, responsiveness, and clarity.
+
+### 16.1 Design Principles
+
+- Modern and professional interface.
+- Responsive layout.
+- Mobile-first design.
+- Accessible typography.
+- Clear navigation.
+- Minimal visual clutter.
+- Consistent design system.
+- Transparent risk presentation.
+- Clear warning messages.
+- Readable report layout.
+
+### 16.2 Proposed Visual Style
+
+- Primary color: Dark navy or deep blue.
+- Accent color: Teal or cyan.
+- Background: Neutral light gray or white.
+- Warning colors: Amber and orange.
+- Critical warning: Red, used carefully.
+- Typography: Modern sans-serif.
+- Cards: Clean, structured, rounded.
+- Charts: Simple and readable.
+
+### 16.3 Responsive Design
+
+The application shall support:
+
+- Desktop.
+- Laptop.
+- Tablet.
+- Mobile.
+
+The interface shall adapt to different screen sizes.
+
+### 16.4 Accessibility
+
+The system shall consider:
+
+- Readable font sizes.
+- Appropriate contrast.
+- Keyboard navigation.
+- Accessible form labels.
+- Clear error messages.
+- Screen-reader-friendly interface structure.
+
+---
+
+## 17. Security Requirements
+
+### 17.1 Authentication Security
+
+- Secure authentication.
+- Password hashing where passwords are stored.
+- Protected routes.
+- Role-based authorization.
+- Secure session or token management.
+
+### 17.2 Data Protection
+
+- HTTPS for deployed services.
+- Secure API communication.
+- Appropriate file access controls.
+- Minimal collection of sensitive information.
+- Appropriate data retention policies.
+
+### 17.3 API Security
+
+- Input validation.
+- Request rate limiting.
+- Authentication checks.
+- Authorization checks.
+- Error handling.
+- Protection against abuse.
+
+### 17.4 File Upload Security
+
+- File type validation.
+- File size restrictions.
+- Safe file storage.
+- Malware scanning where feasible.
+- Preventing unsafe file execution.
+- Secure processing of uploaded documents.
+
+### 17.5 AI Security
+
+- AI API keys shall not be exposed in the frontend.
+- AI requests shall be managed through secure backend services.
+- User-submitted content shall be treated as untrusted input.
+- Uploaded circulars shall not be treated as instructions to the AI system.
+- AI-generated output shall be validated before storage or display.
+- AI processing shall be designed to minimize prompt-injection risks.
+
+### 17.6 Privacy
+
+- Users shall be informed about data collection and processing.
+- Sensitive personal information shall not be unnecessarily collected.
+- Users shall be able to manage their stored information according to the application's policies.
+- Uploaded documents shall be handled responsibly.
+
+---
+
+## 18. Non-Functional Requirements
+
+### 18.1 Performance
+
+The platform should provide responsive navigation and efficient data loading.
+
+AI processing may require additional time depending on the document, API, and verification processes.
+
+### 18.2 Reliability
+
+The application shall implement:
+
+- Error handling.
+- Validation.
+- Failure recovery where feasible.
+- Appropriate loading states.
+- Clear processing errors.
+
+### 18.3 Scalability
+
+The architecture shall be modular and designed to support future improvements in user volume, scanning capacity, AI processing, and storage.
+
+### 18.4 Maintainability
+
+The application shall use:
+
+- Modular components.
+- Structured code.
+- Reusable UI components.
+- Separation of frontend and backend responsibilities.
+- Consistent API conventions.
+- Documentation.
+
+### 18.5 Usability
+
+The platform should be easy to use for inexperienced job seekers.
+
+### 18.6 Compatibility
+
+The application should support modern web browsers, including:
+
+- Google Chrome.
+- Microsoft Edge.
+- Mozilla Firefox.
+- Safari, where supported.
+
+### 18.7 Availability
+
+The platform shall be deployed using suitable hosting services and should provide reasonable availability based on the selected hosting environment.
+
+### 18.8 Data Integrity
+
+The application shall validate data before storing it and maintain appropriate relationships between users, scans, reports, and saved circulars.
+
+---
+
+## 19. Testing Strategy
+
+### 19.1 Unit Testing
+
+Testing individual components and functions, including:
+
+- Input validation.
+- Risk scoring.
+- Information extraction.
+- API utility functions.
+- UI components.
+
+### 19.2 Integration Testing
+
+Testing interactions between:
+
+- Frontend and backend.
+- Backend and database.
+- Backend and AI services.
+- OCR and analysis modules.
+- Authentication and protected routes.
+
+### 19.3 Functional Testing
+
+Testing core functionality:
+
+- Registration.
+- Login.
+- Logout.
+- Circular submission.
+- Text analysis.
+- URL analysis.
+- File upload.
+- Report generation.
+- History.
+- Saved circulars.
+- Community reports.
+- Admin management.
+
+### 19.4 Security Testing
+
+Testing:
+
+- Unauthorized access.
+- Protected routes.
+- Role-based permissions.
+- API access controls.
+- File upload validation.
+- Input validation.
+- Sensitive data handling.
+
+### 19.5 Usability Testing
+
+Testing the application with users to evaluate:
+
+- Navigation.
+- Ease of scanning.
+- Report readability.
+- Clarity of risk indicators.
+- Mobile usability.
+
+### 19.6 AI Evaluation
+
+AI evaluation shall use a curated dataset of sample job advertisements.
+
+The evaluation will measure:
+
+- Precision.
+- Recall.
+- False-positive rate.
+- False-negative rate.
+- Accuracy of extracted information.
+- Consistency of explanations.
+- Quality of risk assessments.
+
+The project will not claim that AI can identify all fraudulent advertisements.
+
+---
+
+## 20. Project Implementation Plan
+
+Proposed development timeline: 8 weeks.
+
+### Week 1: Planning and UI/UX Design
+
+- Requirements analysis.
+- Project structure.
+- Wireframes.
+- UI/UX design.
+- Database planning.
+- API planning.
+
+### Week 2: Frontend Foundation
+
+- React and Vite setup.
+- Tailwind configuration.
+- Layouts.
+- Routing.
+- Shared components.
+- Landing page.
+
+### Week 3: Frontend Modules
+
+- Scan page.
+- Authentication pages.
+- Dashboard.
+- Report page.
+- History page.
+- Community interface.
+
+### Week 4: Backend Foundation
+
+- Node.js setup.
+- Express setup.
+- MongoDB integration.
+- API structure.
+- Authentication.
+- User management.
+
+### Week 5: Scan Processing
+
+- Text submission.
+- URL submission.
+- File upload.
+- OCR integration.
+- Text extraction.
+- Input preprocessing.
+
+### Week 6: AI Integration
+
+- AI API integration.
+- Structured output.
+- Risk assessment.
+- Rule-based analysis.
+- Report generation.
+
+### Week 7: Advanced Features
+
+- Scan history.
+- Saved circulars.
+- Community reports.
+- Admin dashboard.
+- Analytics.
+- Source verification improvements.
+
+### Week 8: Testing and Deployment
+
+- Functional testing.
+- Security testing.
+- AI evaluation.
+- Bug fixes.
+- Deployment.
+- Documentation.
+- Final presentation preparation.
+
+The timeline may be adjusted based on available resources and project requirements.
+
+---
+
+## 21. Expected Outcomes
+
+The expected outcome is a functional AI-powered web application that helps job seekers evaluate recruitment advertisements and understand potential fraud indicators.
+
+The final application is expected to provide:
+
+1. A responsive web interface.
+2. A circular scanning system.
+3. AI-powered analysis.
+4. Structured risk assessment.
+5. Suspicious indicator detection.
+6. Verification status reporting.
+7. Supporting evidence and guidance.
+8. Text, URL, image, and PDF submission support.
+9. User authentication.
+10. User dashboards.
+11. Scan history.
+12. Saved circulars.
+13. Community reporting.
+14. Administrative management.
+15. Educational resources.
+16. Deployment-ready architecture.
+
+---
+
+## 22. Project Impact
+
+### 22.1 Social Impact
+
+CircularCheck AI aims to improve awareness of employment-related fraud and provide job seekers with accessible verification guidance.
+
+### 22.2 Educational Impact
+
+The platform will help users understand suspicious recruitment patterns and develop safer online job-search practices.
+
+### 22.3 Digital Safety Impact
+
+The platform may contribute to reducing exposure to fraudulent recruitment advertisements, suspicious payment requests, and phishing-related risks.
+
+### 22.4 Accessibility Impact
+
+The platform aims to make basic recruitment verification assistance accessible to users with limited technical knowledge.
+
+### 22.5 Future Business Potential
+
+The platform may be expanded into a broader recruitment safety and digital verification service.
+
+Potential future users and partners may include:
+
+- Educational institutions.
+- Career development centers.
+- Job portals.
+- Recruitment agencies.
+- Awareness organizations.
+- Employment communities.
+
+---
+
+## 23. Limitations
+
+The project may face the following limitations:
+
+- AI analysis may produce incorrect results.
+- Some advertisements may contain insufficient information.
+- Official source data may not be available.
+- External verification services may have limitations.
+- OCR may produce inaccurate text.
+- Website content may change.
+- Some fraudulent advertisements may not contain detectable warning signs.
+- Some legitimate advertisements may contain suspicious-looking elements.
+- Risk scores may require continuous calibration.
+- The initial implementation may not support comprehensive real-time verification.
+
+CircularCheck AI shall be presented as an assistive verification platform rather than a definitive fraud detection authority.
+
+---
+
+## 24. Future Enhancements
+
+Potential future features include:
+
+### 24.1 Browser Extension
+
+A browser extension could allow users to analyze job advertisements directly while browsing websites.
+
+### 24.2 Mobile Application
+
+A mobile application could improve accessibility for users who primarily use smartphones.
+
+### 24.3 Voice-Based Assistance
+
+Users could submit questions and receive voice-based explanations in Bengali.
+
+### 24.4 Advanced Organization Verification
+
+The platform could integrate with verified organizational databases and trusted recruitment source registries.
+
+### 24.5 Community Intelligence
+
+Community reports could help identify repeated suspicious patterns across advertisements.
+
+### 24.6 Duplicate Circular Detection
+
+The system could identify duplicate advertisements and potentially detect recurring scam patterns.
+
+### 24.7 Scam Pattern Network
+
+The platform could identify relationships between suspicious domains, contact numbers, email addresses, payment identifiers, and reported advertisements where lawful and appropriate.
+
+### 24.8 AI Explainability Improvements
+
+The platform could provide more detailed explanations showing which parts of a circular contributed to each risk indicator.
+
+### 24.9 Advanced Document Analysis
+
+Future versions could support:
+
+- Multiple document formats.
+- Improved OCR.
+- Document authenticity indicators.
+- Image manipulation analysis, where feasible.
+
+### 24.10 Public Awareness Dashboard
+
+A public dashboard could display aggregated and moderated statistics about reported recruitment scams without exposing private user information or making unsupported accusations.
+
+---
+
+## 25. Conclusion
+
+CircularCheck AI is proposed as an AI-powered job circular verification and scam risk analysis platform designed to address the growing challenges faced by job seekers when evaluating online recruitment advertisements.
+
+By combining AI-powered text analysis, structured information extraction, suspicious-pattern detection, rule-based risk assessment, source verification, and transparent reporting, the platform aims to provide users with an accessible tool for understanding recruitment-related risks.
+
+The project will be developed using modern web technologies, including React.js, Node.js, Express.js, MongoDB, and AI-powered services. Its modular architecture will allow future expansion into advanced verification systems, community intelligence, browser extensions, and mobile applications.
+
+CircularCheck AI will emphasize transparency, usability, security, responsible AI use, and evidence-based analysis. Rather than making definitive claims about the authenticity of advertisements, it will help users understand potential warning signs and make more informed decisions.
+
+The project has the potential to become a practical digital safety platform for job seekers in Bangladesh while demonstrating the application of Artificial Intelligence, full-stack web development, cybersecurity principles, and responsible technology design.
+
+---
+
+## 26. Proposed Project Name and Tagline
+
+**Project Name:** CircularCheck AI
+
+**Tagline:** Verify Before You Apply.
+
+**Alternative Tagline:** Your AI Assistant for Safer Job Searching.
+
+**Project Category:** AI, Cybersecurity, Employment Safety, Web Application Development.
+
+**Proposed Technology:** React.js, Tailwind CSS, Node.js, Express.js, MongoDB, AI API, OCR.
+
+**Project Vision:** To help job seekers make safer and more informed employment decisions through accessible, transparent, and AI-assisted recruitment verification.

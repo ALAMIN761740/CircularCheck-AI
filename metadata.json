@@ -1,0 +1,6 @@
+{
+  "name": "CircularCheck AI",
+  "description": "AI-powered job circular verification and scam risk analysis platform for job seekers in Bangladesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
